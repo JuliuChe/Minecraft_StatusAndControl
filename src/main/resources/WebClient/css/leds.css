@@ -1,0 +1,37 @@
+.leds-container {
+	padding: 				5px !important;
+}
+
+.led-box {
+	height: 				auto;
+	margin: 				0;
+	padding: 				5px !important;
+	border: 				none /*1px darkgray dotted*/;
+}
+
+.led-box .led {
+	margin: 				0 auto;
+	width: 					20px;
+	height: 				20px;
+	border-radius: 			50%;
+}
+
+.led-box .led-red {
+	background-color: 		#F00;
+	box-shadow: 			rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+}
+
+.led-box .led-yellow {
+	background-color: 		#FF0;
+	box-shadow: 			rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+}
+
+.led-box .led-green {
+	background-color: 		#ABFF00;
+	box-shadow: 			rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+}
+
+.led-box .led-blue {
+	background-color: 		#24E0FF;
+	box-shadow: 			rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;
+}

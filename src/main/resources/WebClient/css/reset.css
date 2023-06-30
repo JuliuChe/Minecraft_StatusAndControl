@@ -1,0 +1,89 @@
+/* CSS Document */
+/* ******************************************************************************************************** */ 
+/* **                                                                                                    ** */ 
+/* **  RESET - RESET - RESET - RESET - RESET - RESET - RESET - RESET - RESET - RESET - RESET - RESET     ** */ 
+/* **                                                                                                    ** */ 
+/* ******************************************************************************************************** */ 
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, 
+address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, 
+b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, 
+tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, 
+output, ruby, section, summary, time, mark, audio, video { 
+	                  padding: 0;
+	                   margin: 0;
+	                   border: 0;
+                    font-size: 100%;
+               vertical-align: baseline;
+                   background: transparent; 
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	                  display: block;
+}
+
+body        {     line-height: 1; }
+ol, ul      {      list-style: none; }
+blockquote, q {        quotes: none; }
+blockquote:before, blockquote:after, 
+q:before, q:after {   content: none; }
+:focus      {         outline: none; }
+ins         { text-decoration: none; }
+del         { text-decoration: line-through; }
+table       { border-collapse: collapse; border-spacing: 0; }
+div         {         display: block; float: none; }
+
+
+
+/* ******************************************************************************************************** */ 
+/* **                                       HREF Design                                                  ** */
+/* ******************************************************************************************************** */ 
+a[href^="http://"] {
+	               background: none;
+	                    color: #0000ff;
+	                  padding: 0;
+	                   margin: 0;
+	           vertical-align: top;
+	                   border: none;
+}
+
+a[href^="http://www.facebook.com"] {
+	               background: url(img/link/facebook.png) center left no-repeat;
+	                  padding: 5px 0 5px 25px;
+
+	              font-weight: bold;
+	                    color: #562e18;
+	          text-decoration: none;
+}
+
+a[href^="mailto:"] {
+	               background: url(img/link/email.png) no-repeat left center;
+	                  padding: 5px 0 5px 25px;
+
+	              font-weight: bold;
+	                    color: #562e18;
+	          text-decoration: none;
+}
+
+a[href$=".zip"] {
+	               background: url(img/link/zip.png) center left no-repeat;
+	                  padding: 4px 0 4px 20px;
+
+	              font-weight: bold;
+}
+
+a[href$=".pdf"] {
+	               background: url(img/link/pdf.png) center left no-repeat;
+	                  padding: 4px 0 4px 20px;
+
+	              font-weight: bold;
+	               text-align: left;
+}
+
+a[href$=".txt"] {
+	               background: url(img/link/txt.png) center left no-repeat;
+	                  padding: 4px 0 4px 20px;
+
+	              font-weight: bold;
+}

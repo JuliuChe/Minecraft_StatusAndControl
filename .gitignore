@@ -1,0 +1,8 @@
+/.idea/vcs.xml
+/.idea/libraries
+/.idea/jarRepositories.xml
+/.idea/codeStyles
+/.idea/*.xml
+/target/
+
+# TODO: add your build folder here

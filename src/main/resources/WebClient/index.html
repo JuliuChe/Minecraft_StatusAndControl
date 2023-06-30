@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hes-so Valais//Wallis - EA WebSocket Client</title>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/minecraft.css"/>
+	<link rel="stylesheet" type="text/css" href="css/btnOnOff.css"/>
+	<link rel="stylesheet" type="text/css" href="css/prettify.css"/>
+	<link rel="stylesheet" type="text/css" href="css/leds.css"/>
+	<link rel="stylesheet" type="text/css" href="css/gauge.css"/>
+	<link rel="stylesheet" type="text/css" href="css/switch.css"/>
+	<link rel="stylesheet" type="text/css" href="css/popup.css"/>
+	
+	<script type="text/javascript" src="js/ezhmiWebSocket.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", connect, false);
+
+		document.documentElement.classList.add('js');
+		addEventListener('input', e => {
+			let _t = e.target;
+			_t.style.setProperty('--val', + (_t.value * 1.15));
+		}, false);
+		
+	</script>
+</head>
+<body class="minecraft">
+
+	<div id="main">
+		
+		<!-- Header -->
+		<header class="bot"><h1 style="padding-top: 20px !important;">WebSocket Client 231_SIn</h1></header>
+		
+		<!-- Content -->
+		<div id="content">
+			<h2 class="center">WebSocket Client</h2>
+			<h3 class="center">Minecraft Monitoring</h3>
+			
+			<!-- EZHMI content -->
+			<div id="ezhmiContent">
+				
+				<!-- webSocket message -->
+				<div>
+					<label class="darkGray floating txtRight">WebSocket Messages: </label>
+					<label class="floating txtLeft" id="wsMessage">WebSocket messages will go here...</label>
+				</div>
+				
+				<h4 class="txtCenter">Input Registers</h4>
+				<div class="modbus">
+					<div class="label darkGray txtRight">SOLAR_P_FLOAT</div>
+					<div class="value"><input class="txtLeft"  type="text" id="SOLAR_P_FLOAT" value="" disabled=""/></div>
+					<div class="value"><input class="txtRight" type="text" id="WIND_P_FLOAT" value="" disabled/></div>
+					<div class="label darkGray txtLeft">WIND_P_FLOAT</div>
+				</div>
+				<div class="modbus">
+					<div class="label darkGray txtRight">COAL_P_FLOAT</div>
+					<div class="value"><input class="txtLeft"  type="text" id="COAL_P_FLOAT" value="" disabled=""/></div>
+					<div class="value"><input class="txtRight" type="text" id="COAL_AMOUNT" value="" disabled/></div>
+					<div class="label darkGray txtLeft">COAL_AMOUNT</div>
+				</div>
+				<div class="modbus">
+					<div class="label darkGray txtRight">BATT_CHRG_FLOAT</div>
+					<div class="value"><input class="txtLeft"  type="text" id="BATT_CHRG_FLOAT" value="" disabled/></div>
+					<div class="value"><input class="txtRight" type="text" id="BATT_P_FLOAT" value="" disabled/></div>
+					<div class="label darkGray txtLeft">BATT_P_FLOAT</div>
+				</div>
+				<div class="modbus">
+					<div class="label darkGray txtRight">GRID_U_FLOAT</div>
+					<div class="value"><input class="txtLeft"  type="text" id="GRID_U_FLOAT" value="" disabled/></div>
+					<div class="value"><input class="invisible" type="text" value="" disabled/></div>
+					<div class="label darkGray txtLeft">&nbsp;</div>
+				</div>
+				<div class="modbus">
+					<div class="label darkGray txtRight">HOME_P_FLOAT</div>
+					<div class="value"><input class="txtLeft"  type="text" id="HOME_P_FLOAT" value="" disabled/></div>
+					<div class="value"><input class="txtRight" type="text" id="PUBLIC_P_FLOAT" value="" disabled/></div>
+					<div class="label darkGray txtLeft">PUBLIC_P_FLOAT</div>
+				</div>
+				<div class="modbus">
+					<div class="label darkGray txtRight">FACTORY_P_FLOAT</div>
+					<div class="value"><input class="txtLeft"  type="text" id="FACTORY_P_FLOAT" value="" disabled/></div>
+					<div class="value"><input class="txtRight" type="text" id="BUNKER_P_FLOAT" value="" disabled/></div>
+					<div class="label darkGray txtLeft">BUNKER_P_FLOAT</div>
+				</div>
+				
+				<h4 class="txtCenter">Coils &amp; Holding Registers</h4>
+				<div class="modbus" style="align-items: center !important;">
+					<div class="label darkGray txtRight">COAL_ST</div>
+					<div id="COAL_ST" class="gauge-container two"></div>
+					<div id="FACTORY_ST" class="gauge-container two"></div>
+					<div class="label darkGray txtLeft">FACTORY_ST</div>
+				</div>
+				
+				<div class="modbus" style="align-items: center !important;">
+					<div class="label darkGray txtRight">SOLAR_CONNECT_ST</div>
+					<div class="value"><div class="led-box"><div id="SOLAR_CONNECT_ST" class="led led-yellow"></div></div></div>
+					<div class="value"><div class="led-box"><div id="WIND_CONNECT_ST" class="led led-yellow"></div></div></div>
+					<div class="label darkGray txtLeft">WIND_CONNECT_ST</div>
+				</div>
+				<div style="margin: 0 auto !important;">
+					<div class="energy">
+						<img   class="energy" src="images/ea/solarPanel.png"/><br/>
+						<input class="btnOnOff"  id="REMOTE_SOLAR_SW" type="checkbox" onclick="toggleSwitch(this);"/>
+						<label class="lblOnOff" for="REMOTE_SOLAR_SW"><i/></label>
+					</div>
+					<div class="energy">
+						<img   class="energy" src="images/ea/windTurbine.png"/><br/>
+						<input class="btnOnOff"  id="REMOTE_WIND_SW" type="checkbox" onclick="toggleSwitch(this);"/>
+						<label class="lblOnOff" for="REMOTE_WIND_SW"><i/></label>
+					</div>
+					<div class="energy">
+						<img   class="energy" src="images/ea/coalPowerplant.png"/><br/>
+						<input class="btnSlider" id="REMOTE_COAL_SP" name="REMOTE_COAL_SP" type="range" min="0" max="100" value="0" onchange="sliderUpdated(this);"/>
+					</div>
+					<div class="energy">
+						<img   class="energy" src="images/ea/factory.png"/><br/>
+						<input class="btnSlider" id="REMOTE_FACTORY_SP" name="REMOTE_FACTORY_SP" type="range" min="0" max="100" value="0" onchange="sliderUpdated(this);"/>
+					</div>
+				</div>				
+			</div>
+		</div> 	<!-- <div id="content"> -->
+		
+		<!-- Footer -->
+		<footer>WebSocket Demonstrator for SIn Module<br/><br/><br/><br/><br/><br/><span id="log">&nbsp;</span></footer>	
+	</div> <!-- <div id="main"> -->
+	<script type="text/javascript" src="js/gauge.js"></script>
+	<script>
+		var gauge_coal_sp = Gauge(document.getElementById("COAL_ST"), {
+			min: 0,
+			max: 100,
+			dialStartAngle: 180,
+			dialEndAngle: 0,
+			value: 0,
+			viewBox: "0 0 100 57",
+			color: function(value) {
+				if(value < 5 || value > 95) {
+				  return "#bb0000";
+				}else if(value < 15 || value > 85) {
+				  return "#eedd00";
+				} else {
+				  return "#00bb00";
+				}
+			}
+		});
+		var gauge_factory_sp = Gauge(document.getElementById("FACTORY_ST"), {
+			min: 0,
+			max: 100,
+			dialStartAngle: 180,
+			dialEndAngle: 0,
+			value: 0,
+			viewBox: "0 0 100 57",
+			color: function(value) {
+				if(value < 5 || value > 95) {
+				  return "#bb0000";
+				}else if(value < 15 || value > 85) {
+				  return "#eedd00";
+				} else {
+				  return "#00bb00";
+				}
+			}
+		});
+		gauge_coal_sp.setValue(100);
+		gauge_coal_sp.setValueAnimated(0, 3);
+		gauge_factory_sp.setValue(100);
+		gauge_factory_sp.setValueAnimated(0, 3);
+		
+		function updateCoalSp(value) {
+			gauge_coal_sp.setValueAnimated(value, 3);
+		}
+		
+		function updateFactorySp(value) {
+			gauge_factory_sp.setValueAnimated(value, 3);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hes-so Valais//Wallis - EA WebSocket Client</title>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/favicon.png"/>
+	
+	<script type="text/javascript" src="js/ezhmiWebSocket.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", connect, false);
+	</script>
+</head>
+<body style="font-family: sans-serif;">
+	<!-- Header -->
+	<header style="width: 100%; align-content: center"><h1 style="padding-top: 20px !important; text-align: center">WebSocket Client 231_SIn</h1></header>
+	
+	<!-- Content -->
+	<div style="margin: 20px; border: #e5e2e2 1px solid; box-shadow: 10px 10px 15px #9a9a9a; width: auto; height: auto; padding: 10px; background-image: url(images/ea/solarPanel.png); background-position: right bottom; background-repeat: no-repeat; background-size: 200px;">
+		<h2 style="text-align: center;">WebSocket Client</h2>
+		<h3 style="text-align: center;">Minecraft Monitoring</h3>
+		
+		<!-- EZHMI content -->
+		<div style="margin: 10px; width: auto;">
+			
+			<!-- webSocket message -->
+			<div style="padding: 10px auto; text-align: center">
+				<label>WebSocket Messages&nbsp;&rarr;&nbsp;</label>
+				<label  id="wsMessage">WebSocket messages will go here...</label>
+			</div>
+			
+			<!-- Input DataPoint value from Minecraft -->
+			<div style="padding: 10px">
+				<div style="display: inline-block; width: 250px; text-align: right"><label for="SOLAR_P_FLOAT">SOLAR_P_FLOAT&nbsp;</label></div>
+				<input  id="SOLAR_P_FLOAT" type="text" value="" disabled=""/>
+			</div>
+			
+			<!-- Output DataPoint value to be pushed to Minecraft -->
+			<div style="padding: 10px;">
+				<div style="display: inline-block; width: 250px; text-align: right"><label for="REMOTE_SOLAR_SW">REMOTE_SOLAR_SW&nbsp;</label></div>
+				<input  id="REMOTE_SOLAR_SW" type="checkbox" onclick="toggleSwitch(this);"/><br/>
+				<div style="display: inline-block; width: 250px; text-align: right"><label for="SOLAR_CONNECT_ST">SOLAR_CONNECT_ST&nbsp;</label></div>
+				<input  id="SOLAR_CONNECT_ST" type="text" value="" disabled=""/>
+			</div>
+		</div>			
+	</div>
+	
+	<!-- Footer -->
+	<footer style="font-style: italic; text-align: center; font-size: small; color: #4b4b4b">WebSocket Demonstrator for SIn Module</footer>
+</body>
+</html>
